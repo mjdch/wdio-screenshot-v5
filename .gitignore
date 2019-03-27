@@ -1,0 +1,13 @@
+# idea
+.idea
+
+# Node
+node_modules
+npm-debug.log
+yarn.lock
+
+# project
+.tmp
+lib
+
+.DS_Store
