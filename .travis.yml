@@ -1,0 +1,27 @@
+dist: trusty
+
+language: node_js
+
+addons:
+  firefox: latest
+   chrome: stable
+
+matrix:
+  include:
+    - node_js: 8
+      env: GRAPHICSMAGICK=true
+      addons:
+        apt:
+          packages:
+            - graphicsmagick
+            - google-chrome-stable
+
+    - node_js: 8
+      env: GRAPHICSMAGICK=false
+
+jobs:
+  include:
+    - stage: unit
+      script: npm run test
+    - stage: integration
+      script: npm run test:local
