@@ -1,0 +1,35 @@
+dist: trusty
+
+language: node_js
+
+addons:
+  firefox: latest
+  chrome: stable
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+      - google-chrome
+    packages:
+      - g++-4.8
+
+matrix:
+  include:
+    - node_js: 8
+      env: GRAPHICSMAGICK=true
+      addons:
+        apt:
+          packages:
+            - graphicsmagick
+
+    - node_js: 8
+      env: GRAPHICSMAGICK=false
+
+before_script:
+  - echo "using chrome $(google-chrome  --version)"
+  - echo "using firefox $(firefox --version)"
+  - export FIREFOX_BIN=$(which firefox)
+  - npm run server &
+
+  script:
+  - npm run test
+  - npm run test:standalone

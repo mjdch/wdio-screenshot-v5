@@ -87,6 +87,8 @@ function getBrowserSpecificFile(screenshotPath) {
  * may lead to comparison errors, different displays/image buffer will render colors differently.
  */
 
+ const name = browser.capabilities.browserName;
+
 describe('integration tests for desktop browsers', function () {
 
   context('static sites - static.html', function () {
@@ -97,7 +99,7 @@ describe('integration tests for desktop browsers', function () {
 
     context('saveDocumentScreenshot', function () {
       it('with window size 480px', async function () {
-        const screenPath = path.join(tmpDir, '/desktop-static-document-480', `${generateUUID()}.png`);
+        const screenPath = path.join(tmpDir, '/desktop-static-document-480_'+name+'.png');
 
         await browser.setWindowSize(480, 500);
         await browser.pause(500);
@@ -108,7 +110,7 @@ describe('integration tests for desktop browsers', function () {
       });
 
       it('with window size 1600', async function () {
-        const screenPath = path.join(tmpDir, '/desktop-static-document-1600', `${generateUUID()}.png`);
+        const screenPath = path.join(tmpDir, '/desktop-static-document-1600_'+name+'.png');
 
         await browser.setWindowSize(1600, 500);
         await browser.pause(500);
@@ -121,7 +123,7 @@ describe('integration tests for desktop browsers', function () {
     context('saveElementScreenshot', function () {
 
       it('with window size 480px', async function () {
-        const screenPath = path.join(tmpDir, '/desktop-static-element-footer', `${generateUUID()}.png`);
+        const screenPath = path.join(tmpDir, '/desktop-static-element-footer_'+name+'.png');
 
         await browser.setWindowSize(480, 500);
         await browser.pause(500);
@@ -131,7 +133,7 @@ describe('integration tests for desktop browsers', function () {
       });
 
       it('with window size 1600px', async function () {
-        const screenPath = path.join(tmpDir, '/desktop-static-element-footer', `${generateUUID()}.png`);
+        const screenPath = path.join(tmpDir, '/desktop-static-element-footer_'+name+'.png');
 
         await browser.setWindowSize(1600, 500);
         await browser.pause(500);
@@ -144,7 +146,7 @@ describe('integration tests for desktop browsers', function () {
     context('saveViewportScreenshot', function () {
 
       it('with window size 480px', async function () {
-        const screenPath = path.join(tmpDir, '/desktop-static-viewport-480', `${generateUUID()}.png`);
+        const screenPath = path.join(tmpDir, '/desktop-static-viewport-480_'+name+'.png');
 
 
         await browser.setWindowSize(480, 560);
@@ -155,7 +157,7 @@ describe('integration tests for desktop browsers', function () {
       });
 
       it('with window size 1600', async function () {
-        const screenPath = path.join(tmpDir, '/desktop-static-viewport-1600', `${generateUUID()}.png`);
+        const screenPath = path.join(tmpDir, '/desktop-static-viewport-1600_'+name+'.png');
 
 
         await browser.setWindowSize(1600, 580);
@@ -175,7 +177,7 @@ context('responsive sites - responsive.html', function () {
 
   context('saveDocumentScreenshot', function () {
     it('with window size 480px', async function () {
-      const screenPath = path.join(tmpDir, '/desktop-responsive-document-480', `${generateUUID()}.png`);
+      const screenPath = path.join(tmpDir, '/desktop-responsive-document-480_'+name+'.png');
 
       await browser.setWindowSize(480, 500);
       await browser.pause(500);
@@ -186,7 +188,7 @@ context('responsive sites - responsive.html', function () {
     });
 
     it('with window size 1600', async function () {
-      const screenPath = path.join(tmpDir, '/desktop-responsive-document-1600', `${generateUUID()}.png`);
+      const screenPath = path.join(tmpDir, '/desktop-responsive-document-1600_'+name+'.png');
 
       await browser.setWindowSize(1600, 500);
       await browser.pause(500);
@@ -199,7 +201,7 @@ context('responsive sites - responsive.html', function () {
   context('saveElementScreenshot', function () {
 
     it('with window size 480px', async function () {
-      const screenPath = path.join(tmpDir, '/desktop-responsive-element-footer-480', `${generateUUID()}.png`);
+      const screenPath = path.join(tmpDir, '/desktop-responsive-element-footer-480_'+name+'.png');
 
       await browser.setWindowSize(480, 500);
       await browser.pause(500);
@@ -209,7 +211,7 @@ context('responsive sites - responsive.html', function () {
     });
 
     it('with window size 1600px', async function () {
-      const screenPath = path.join(tmpDir, '/desktop-responsive-element-footer-1600', `${generateUUID()}.png`);
+      const screenPath = path.join(tmpDir, '/desktop-responsive-element-footer-1600_'+name+'.png');
 
       await browser.setWindowSize(1600, 500);
       await browser.pause(500);
@@ -222,7 +224,7 @@ context('responsive sites - responsive.html', function () {
   context('saveViewportScreenshot', function () {
 
     it('with window size 480px', async function () {
-      const screenPath = path.join(tmpDir, '/desktop-responsive-viewport-480', `${generateUUID()}.png`);
+      const screenPath = path.join(tmpDir, '/desktop-responsive-viewport-480_'+name+'.png');
 
       await browser.setWindowSize(480, 500);
       await browser.pause(500);
@@ -232,7 +234,7 @@ context('responsive sites - responsive.html', function () {
     });
 
     it('with window size 1600', async function () {
-      const screenPath = path.join(tmpDir, '/desktop-responsive-viewport-1600', `${generateUUID()}.png`);
+      const screenPath = path.join(tmpDir, '/desktop-responsive-viewport-1600_'+name+'.png');
 
       await browser.setWindowSize(1600, 500);
       await browser.pause(500);
@@ -251,7 +253,7 @@ context('responsive sites with min-width - responsive-min-width.html', function 
 
   context('saveDocumentScreenshot', function () {
     it('with window size 480px', async function () {
-      const screenPath = path.join(tmpDir, '/desktop-responsive-min-width-document-480', `${generateUUID()}.png`);
+      const screenPath = path.join(tmpDir, '/desktop-responsive-min-width-document-480_'+name+'.png');
 
       await browser.setWindowSize(480, 500);
       await browser.pause(500);
@@ -262,7 +264,7 @@ context('responsive sites with min-width - responsive-min-width.html', function 
     });
 
     it('with window size 1600', async function () {
-      const screenPath = path.join(tmpDir, '/desktop-responsive-min-width-document-1600', `${generateUUID()}.png`);
+      const screenPath = path.join(tmpDir, '/desktop-responsive-min-width-document-1600_'+name+'.png');
 
       await browser.setWindowSize(1600, 500);
       await browser.pause(500);
@@ -275,7 +277,7 @@ context('responsive sites with min-width - responsive-min-width.html', function 
   context('saveElementScreenshot', function () {
 
     it('with window size 480px', async function () {
-      const screenPath = path.join(tmpDir, '/desktop-responsive-min-width-element-footer-480', `${generateUUID()}.png`);
+      const screenPath = path.join(tmpDir, '/desktop-responsive-min-width-element-footer-480_'+name+'.png');
 
       await browser.setWindowSize(480, 500);
       await browser.pause(500);
@@ -285,7 +287,7 @@ context('responsive sites with min-width - responsive-min-width.html', function 
     });
 
     it('with window size 1600px', async function () {
-      const screenPath = path.join(tmpDir, '/desktop-responsive-min-width-element-footer-1600', `${generateUUID()}.png`);
+      const screenPath = path.join(tmpDir, '/desktop-responsive-min-width-element-footer-1600_'+name+'.png');
 
       await browser.setWindowSize(1600, 500);
       await browser.pause(500);
@@ -298,7 +300,7 @@ context('responsive sites with min-width - responsive-min-width.html', function 
   context('saveViewportScreenshot', function () {
 
     it('with window size 480px', async function () {
-      const screenPath = path.join(tmpDir, '/desktop-responsive-min-width-viewport-480', `${generateUUID()}.png`);
+      const screenPath = path.join(tmpDir, '/desktop-responsive-min-width-viewport-480_'+name+'.png');
 
       await browser.setWindowSize(480, 500);
       await browser.pause(500);
@@ -308,7 +310,7 @@ context('responsive sites with min-width - responsive-min-width.html', function 
     });
 
     it('with window size 1600', async function () {
-      const screenPath = path.join(tmpDir, '/desktop-responsive-min-width-viewport-1600', `${generateUUID()}.png`);
+      const screenPath = path.join(tmpDir, '/desktop-responsive-min-width-viewport-1600_'+name+'.png');
 
       await browser.setWindowSize(1600, 500);
       await browser.pause(500);
@@ -328,7 +330,7 @@ context('dynamic size issues - size-dynamic.html', function () {
   context('saveDocumentScreenshot', function () {
 
     it('resizes elements properly', async function () {
-      const screenPath = path.join(tmpDir, '/desktop-dynamic-size-document-480', `${generateUUID()}.png`);
+      const screenPath = path.join(tmpDir, '/desktop-dynamic-size-document-480_'+name+'.png');
 
       await browser.setWindowSize(480, 500);
       await browser.pause(500);
@@ -341,7 +343,7 @@ context('dynamic size issues - size-dynamic.html', function () {
   context('saveViewportScreenshot', function () {
 
     it('resizes elements properly', async function () {
-      const screenPath = path.join(tmpDir, '/desktop-dynamic-size-viewport-480', `${generateUUID()}.png`);
+      const screenPath = path.join(tmpDir, '/desktop-dynamic-size-viewport-480_'+name+'.png');
 
       await browser.setWindowSize(480, 500);
       await browser.pause(500);
@@ -353,7 +355,7 @@ context('dynamic size issues - size-dynamic.html', function () {
   context('saveElementScreenshot', function () {
 
     it('resizes elements properly', async function () {
-      const screenPath = path.join(tmpDir, '/desktop-dynamic-size-element-480', `${generateUUID()}.png`);
+      const screenPath = path.join(tmpDir, '/desktop-dynamic-size-element-480_'+name+'.png');
 
       await browser.setWindowSize(480, 500);
       await browser.pause(500);
@@ -372,7 +374,7 @@ context('overlay - overlay.html', function () {
 
   context('saveDocumentScreenshot', function () {
     it('with window size 480px', async function () {
-      const screenPath = path.join(tmpDir, '/desktop-overlay-document-480', `${generateUUID()}.png`);
+      const screenPath = path.join(tmpDir, '/desktop-overlay-document-480_'+name+'.png');
 
       await browser.setWindowSize(480, 500);
       await browser.pause(500);
@@ -384,7 +386,7 @@ context('overlay - overlay.html', function () {
 
   context('saveViewportScreenshot', function () {
     it('with window size 480px', async function () {
-      const screenPath = path.join(tmpDir, '/desktop-overlay-viewport-480', `${generateUUID()}.png`);
+      const screenPath = path.join(tmpDir, '/desktop-overlay-viewport-480_'+name+'.png');
 
       await browser.setWindowSize(480, 500);
       await browser.pause(500);
@@ -396,7 +398,7 @@ context('overlay - overlay.html', function () {
 
   context('saveElementScreenshot', function () {
     it('with window size 480px', async function () {
-      const screenPath = path.join(tmpDir, '/desktop-overlay-element-480', `${generateUUID()}.png`);
+      const screenPath = path.join(tmpDir, '/desktop-overlay-element-480_'+name+'.png');
 
       await browser.setWindowSize(480, 500);
       await browser.pause(500);
@@ -415,7 +417,7 @@ context('fullpage modal - fullpage-modal.html', function () {
 
   context('saveDocumentScreenshot', function () {
     it('with window size 480px', async function () {
-      const screenPath = path.join(tmpDir, '/desktop-fullpage-modal-document-480', `${generateUUID()}.png`);
+      const screenPath = path.join(tmpDir, '/desktop-fullpage-modal-document-480_'+name+'.png');
 
       await browser.setWindowSize(480, 500);
       await browser.pause(500);
@@ -427,7 +429,7 @@ context('fullpage modal - fullpage-modal.html', function () {
 
   context('saveViewportScreenshot', function () {
     it('with window size 480px', async function () {
-      const screenPath = path.join(tmpDir, '/desktop-fullpage-modal-viewport-480', `${generateUUID()}.png`);
+      const screenPath = path.join(tmpDir, '/desktop-fullpage-modal-viewport-480_'+name+'.png');
 
       await browser.setWindowSize(480, 500);
       await browser.pause(500);
@@ -452,19 +454,19 @@ context('element modifier - element-modifier.html', function () {
     };
 
     it('saveDocumentScreenshot', async function () {
-      const screenPath = path.join(tmpDir, '/desktop-element-modifier-hide-document-480', `${generateUUID()}.png`);
+      const screenPath = path.join(tmpDir, '/desktop-element-modifier-hide-document-480_'+name+'.png');
       await browser.saveDocumentScreenshot(screenPath, options);
       await compareImages(screenPath, screenElementModifierHideDocument480);
     });
 
     it('saveViewportScreenshot', async function () {
-      const screenPath = path.join(tmpDir, '/desktop-element-modifier-hide-viewport-480', `${generateUUID()}.png`);
+      const screenPath = path.join(tmpDir, '/desktop-element-modifier-hide-viewport-480_'+name+'.png');
       await browser.saveViewportScreenshot(screenPath, options);
       await compareImages(screenPath, screenElementModifierHideViewport480);
     });
 
     it('saveElementScreenshot', async function () {
-      const screenPath = path.join(tmpDir, '/desktop-element-modifier-hide-element-480', `${generateUUID()}.png`);
+      const screenPath = path.join(tmpDir, '/desktop-element-modifier-hide-element-480_'+name+'.png');
       await browser.saveElementScreenshot(screenPath, '.wrapper', options);
       await compareImages(screenPath, screenElementModifierHideElement480);
     });
@@ -476,19 +478,19 @@ context('element modifier - element-modifier.html', function () {
     };
 
     it('saveDocumentScreenshot', async function () {
-      const screenPath = path.join(tmpDir, '/desktop-element-modifier-remove-document-480', `${generateUUID()}.png`);
+      const screenPath = path.join(tmpDir, '/desktop-element-modifier-remove-document-480_'+name+'.png');
       await browser.saveDocumentScreenshot(screenPath, options);
       await compareImages(screenPath, screenElementModifierRemoveDocument480);
     });
 
     it('saveViewportScreenshot', async function () {
-      const screenPath = path.join(tmpDir, '/desktop-element-modifier-remove-viewport-480', `${generateUUID()}.png`);
+      const screenPath = path.join(tmpDir, '/desktop-element-modifier-remove-viewport-480_'+name+'.png');
       await browser.saveViewportScreenshot(screenPath, options);
       await compareImages(screenPath, screenElementModifierRemoveViewport480);
     });
 
     it('saveElementScreenshot', async function () {
-      const screenPath = path.join(tmpDir, '/desktop-element-modifier-remove-element-480', `${generateUUID()}.png`);
+      const screenPath = path.join(tmpDir, '/desktop-element-modifier-remove-element-480_'+name+'.png');
       await browser.saveElementScreenshot(screenPath, '.wrapper', options);
       await compareImages(screenPath, screenElementModifierRemoveElement480);
     });
