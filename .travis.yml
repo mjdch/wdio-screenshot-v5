@@ -30,6 +30,6 @@ before_script:
   - export FIREFOX_BIN=$(which firefox)
   - npm run server &
 
-  script:
+script:
   - npm run test
-  - npm run test:standalone
+  - npm run test:local
