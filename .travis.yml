@@ -28,8 +28,6 @@ before_script:
   - echo "using chrome $(google-chrome  --version)"
   - echo "using firefox $(firefox --version)"
   - export FIREFOX_BIN=$(which firefox)
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
   - npm run server &
 
   script:
