@@ -5,6 +5,12 @@ language: node_js
 addons:
   firefox: latest
    chrome: stable
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+      - google-chrome
+    packages:
+      - g++-4.8
 
 matrix:
   include:
@@ -14,14 +20,18 @@ matrix:
         apt:
           packages:
             - graphicsmagick
-            - google-chrome-stable
 
     - node_js: 8
       env: GRAPHICSMAGICK=false
 
-jobs:
-  include:
-    - stage: unit
-      script: npm run test
-    - stage: integration
-      script: npm run test:local
+before_script:
+  - echo "using chrome $(google-chrome  --version)"
+  - echo "using firefox $(firefox --version)"
+  - export FIREFOX_BIN=$(which firefox)
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - npm run server &
+
+  script:
+  - npm run test
+  - npm run test:standalone

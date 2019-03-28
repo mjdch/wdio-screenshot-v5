@@ -13,7 +13,8 @@ exports.config = {
       'goog:chromeOptions': {
         args: [
           'disable-infobars',
-          'headless'
+          'headless',
+          '--force-color-profile=srgb'
         ],
       },
     },
