@@ -132,6 +132,16 @@ describe('integration tests for desktop browsers', function () {
         await compareImages(screenPath, screenStaticElemenentFooter);
       });
 
+      it('accepts wdio elements instead of selectors', async function () {
+        const screenPath = path.join(tmpDir, '/desktop-static-element-footer_'+name+'.png');
+
+        await browser.setWindowSize(480, 500);
+        await browser.pause(500);
+        await browser.saveElementScreenshot(screenPath, $('.footer'));
+
+        await compareImages(screenPath, screenStaticElemenentFooter);
+      });
+
       it('with window size 1600px', async function () {
         const screenPath = path.join(tmpDir, '/desktop-static-element-footer_'+name+'.png');
 

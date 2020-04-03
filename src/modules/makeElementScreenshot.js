@@ -1,4 +1,5 @@
 import debug from 'debug';
+import _ from 'lodash';
 
 import makeAreaScreenshot from './makeAreaScreenshot';
 import beforeScreenshot from './beforeScreenshot';
@@ -18,7 +19,15 @@ export default async function makeElementScreenshot(browser, elementSelector, op
 
   // get bounding rect of elements
 
-  const elements = await browser.$$(elementSelector);
+  let elements;
+  if (_.isString(elementSelector)) {
+    elements = await browser.$$(elementSelector);
+  } else if (_.isArray(elementSelector)) {
+    elements = elementSelector
+  } else {
+    elements = [elementSelector];
+  }
+
   const boundingRects = await browser.execute(getBoundingRects, elements);
 
   const boundingRect = groupBoundingRect(boundingRects);
