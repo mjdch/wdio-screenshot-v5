@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export default async function getElements(elementOrSelector) {
   if (_.isString(elementOrSelector)) {
     return await browser.$$(elementOrSelector);

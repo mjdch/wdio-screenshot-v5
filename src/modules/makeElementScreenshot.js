@@ -1,5 +1,4 @@
 import debug from 'debug';
-import _ from 'lodash';
 
 import makeAreaScreenshot from './makeAreaScreenshot';
 import beforeScreenshot from './beforeScreenshot';
