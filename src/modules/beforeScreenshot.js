@@ -6,6 +6,8 @@ import removeElements from '../scripts/removeElements';
 import triggerResize from '../scripts/triggerResize';
 import hideElements from '../scripts/hideElements';
 
+import getElements from '../utils/getElements';
+
 const log = debug('wdio-screenshot:beforeScreenshot');
 
 export default async function beforeScreenshot(browser, options) {
@@ -21,7 +23,7 @@ export default async function beforeScreenshot(browser, options) {
     log('hide the following elements: %s', options.hide.join(', '));
 
     for (let i = 0; i < options.hide.length; i++) {
-      let elements = await browser.$$(options.hide[i]);
+      let elements = await getElements(options.hide[i]);
       await browser.execute(hideElements, elements, true);
     }
   }
@@ -32,7 +34,7 @@ export default async function beforeScreenshot(browser, options) {
     log('remove the following elements: %s', options.remove.join(', '));
 
     for (let i = 0; i < options.remove.length; i++) {
-      let elements = await browser.$$(options.remove[i]);
+      let elements = await getElements(options.remove[i]);
       await browser.execute(removeElements, elements, true);
     }
   }
